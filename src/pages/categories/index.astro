@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllCategories } from '../../utils/categories';
+
+const categories = await getAllCategories();
+---
+
+<BaseLayout
+  title='Categories'
+  description="Browse all recipe categories in Aimée's Recipe Book.">
+  <div class='container'>
+    <div class='page-hero'>
+      <h1 class='page-hero__title'>Categories</h1>
+      <p class='page-hero__subtitle'>
+        Find recipes by category — from everyday dinners to weekend baking
+        treats.
+      </p>
+    </div>
+
+    {
+      categories.length === 0 ? (
+        <div class='no-results'>
+          <div class='no-results__icon'>📂</div>
+          <p class='no-results__text'>No categories yet.</p>
+        </div>
+      ) : (
+        <div class='categories-grid'>
+          {categories.map((cat) => (
+            <a href={`/categories/${cat.slug}`} class='category-card'>
+              <span class='category-card__name'>{cat.name}</span>
+              <span class='category-card__count'>
+                {cat.count} recipe{cat.count === 1 ? '' : 's'}
+              </span>
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>

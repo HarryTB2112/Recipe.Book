@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RecipeMeta from '../../components/RecipeMeta.astro';
+import ServingsScaler from '../../components/ServingsScaler.astro';
+import CategoryPill from '../../components/CategoryPill.astro';
+import RecipeCard from '../../components/RecipeCard.astro';
+import { getCollection, render } from 'astro:content';
+import { formatDate } from '../../utils/format';
+import { getRecipeSlug } from '../../utils/categories';
+
+export async function getStaticPaths() {
+  const recipes = await getCollection('recipes');
+  return recipes.map((recipe) => ({
+    params: { slug: getRecipeSlug(recipe.id) },
+    props: { recipe },
+  }));
+}
+
+const { recipe } = Astro.props;
+const { data } = recipe;
+const recipeSlug = getRecipeSlug(recipe.id);
+const { Content } = await render(recipe);
+
+// "More in these categories" — other recipes sharing at least one category
+const allRecipes = await getCollection('recipes');
+const related = allRecipes
+  .filter(
+    (r) =>
+      getRecipeSlug(r.id) !== recipeSlug &&
+      r.data.categories.some((c) => data.categories.includes(c)),
+  )
+  .sort((a, b) => b.data.datePublished.localeCompare(a.data.datePublished))
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  ogImage={data.heroImage.src}>
+  <div class='container'>
+    <div class='recipe-detail'>
+      <!-- Back link -->
+      <a href='/recipes' class='back-link'>
+        <svg
+          width='16'
+          height='16'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          aria-hidden='true'>
+          <path d='M19 12H5M12 5l-7 7 7 7'></path>
+        </svg>
+        Back to recipes
+      </a>
+
+      <!-- Breadcrumb -->
+      <nav aria-label='Breadcrumb'>
+        <ol class='breadcrumb'>
+          <li><a href='/'>Home</a></li>
+          <li><a href='/recipes'>Recipes</a></li>
+          <li aria-current='page'>{data.title}</li>
+        </ol>
+      </nav>
+
+      <!-- Hero image -->
+      {
+        data.heroImage.src && (
+          <img
+            src={data.heroImage.src}
+            alt={data.heroImage.alt}
+            class='recipe-detail__hero'
+            width='960'
+            height='480'
+          />
+        )
+      }
+
+      <!-- Header -->
+      <div class='recipe-detail__header'>
+        <h1 class='recipe-detail__title'>{data.title}</h1>
+        <p class='recipe-detail__desc'>{data.description}</p>
+        <div class='recipe-detail__cats'>
+          {data.categories.map((cat) => <CategoryPill name={cat} />)}
+        </div>
+        <RecipeMeta
+          times={data.times}
+          servings={data.servings}
+          difficulty={data.difficulty}
+          cuisine={data.cuisine}
+          author={data.author}
+        />
+        <p
+          style='font-size: var(--text-sm); color: var(--color-text-light); margin-top: var(--space-3);'>
+          Published {formatDate(data.datePublished)}
+          {data.updatedAt && ` · Updated ${formatDate(data.updatedAt)}`}
+        </p>
+      </div>
+
+      <!-- Two-column layout: sidebar (ingredients + scaler) + main content -->
+      <div class='recipe-detail__layout'>
+        <!-- Sidebar -->
+        <aside class='recipe-detail__sidebar'>
+          <div class='recipe-detail__sidebar-section'>
+            <div class='recipe-detail__sidebar-heading'>Servings</div>
+            <div class='recipe-detail__sidebar-inner'>
+              <ServingsScaler
+                baseServings={data.servings}
+                ingredients={data.ingredients}
+              />
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main content / markdown body -->
+        <div class='recipe-detail__content'>
+          <article class='prose'>
+            <Content />
+          </article>
+        </div>
+      </div>
+
+      <!-- More from these categories -->
+      {
+        related.length > 0 && (
+          <div class='more-from'>
+            <h2 class='more-from__title'>More in these categories</h2>
+            <div class='recipe-grid'>
+              {related.map((r) => (
+                <RecipeCard
+                  title={r.data.title}
+                  slug={getRecipeSlug(r.id)}
+                  description={r.data.description}
+                  categories={r.data.categories}
+                  heroImage={r.data.heroImage}
+                  datePublished={r.data.datePublished}
+                  times={r.data.times}
+                  difficulty={r.data.difficulty}
+                />
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title='Page Not Found' description='This page could not be found.'>
+  <div class='container'>
+    <div class='not-found'>
+      <div class='not-found__code'>404</div>
+      <h1 class='not-found__title'>Page Not Found</h1>
+      <p class='not-found__desc'>
+        Hmm, we can't find that page. Maybe the recipe was moved — or eaten
+        already.
+      </p>
+      <div
+        style='display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;'>
+        <a href='/' class='btn btn--primary'>Go Home</a>
+        <a href='/recipes' class='btn btn--outline'>Browse Recipes</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

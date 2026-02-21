@@ -1,0 +1,176 @@
+---
+interface Ingredient {
+  item: string;
+  quantity: number | null;
+  unit: string | null;
+  note?: string;
+  scalable?: boolean;
+}
+
+interface Props {
+  baseServings: number;
+  ingredients: Ingredient[];
+}
+
+const { baseServings, ingredients } = Astro.props;
+---
+
+<!-- Scaler controls -->
+<div class='servings-scaler' id='servings-scaler'>
+  <label class='servings-scaler__label' for='servings-input'>Servings</label>
+  <div class='servings-scaler__controls'>
+    <button
+      class='servings-scaler__btn'
+      id='servings-dec'
+      type='button'
+      aria-label='Decrease servings'>−</button
+    >
+    <input
+      type='number'
+      id='servings-input'
+      class='servings-scaler__input'
+      value={baseServings}
+      min='1'
+      max='50'
+      aria-label='Number of servings'
+    />
+    <button
+      class='servings-scaler__btn'
+      id='servings-inc'
+      type='button'
+      aria-label='Increase servings'>+</button
+    >
+  </div>
+</div>
+
+<!-- Accessible live region for screen readers -->
+<div
+  aria-live='polite'
+  aria-atomic='false'
+  class='sr-only'
+  id='scaler-announce'>
+</div>
+
+<!-- Embedded ingredient data for the scaler script -->
+<script
+  type='application/json'
+  id='recipe-ingredients'
+  set:html={JSON.stringify({ baseServings, ingredients })}
+/>
+
+<!-- Ingredients rendered list (will be updated by script) -->
+<ul class='ingredients-list' id='ingredients-list' aria-label='Ingredients'>
+  {
+    ingredients.map((ing) => (
+      <li class='ingredients-list__item'>
+        <span class='ingredients-list__qty' data-ingredient-qty>
+          {ing.quantity === null
+            ? ''
+            : `${ing.quantity}${ing.unit ? ' ' + ing.unit : ''}`}
+        </span>
+        <span class='ingredients-list__name'>
+          {ing.item}
+          {ing.note && (
+            <span class='ingredients-list__note'> ({ing.note})</span>
+          )}
+        </span>
+      </li>
+    ))
+  }
+</ul>
+
+<script>
+  (function () {
+    'use strict';
+
+    const dataEl = document.getElementById('recipe-ingredients');
+    const listEl = document.getElementById('ingredients-list');
+    const input = document.getElementById(
+      'servings-input',
+    ) as HTMLInputElement | null;
+    const decBtn = document.getElementById(
+      'servings-dec',
+    ) as HTMLButtonElement | null;
+    const incBtn = document.getElementById(
+      'servings-inc',
+    ) as HTMLButtonElement | null;
+    const announce = document.getElementById('scaler-announce');
+
+    if (!dataEl || !listEl || !input || !decBtn || !incBtn) return;
+
+    const { baseServings, ingredients } = JSON.parse(
+      dataEl.textContent || '{}',
+    ) as {
+      baseServings: number;
+      ingredients: Array<{
+        item: string;
+        quantity: number | null;
+        unit: string | null;
+        note?: string;
+        scalable?: boolean;
+      }>;
+    };
+    if (!baseServings || !Array.isArray(ingredients)) return;
+
+    const items = listEl.querySelectorAll('.ingredients-list__item');
+
+    function formatQty(value: number): string {
+      const rounded = Math.round(value);
+      if (Math.abs(value - rounded) < 0.01) return String(rounded);
+      return parseFloat(value.toFixed(2)).toString();
+    }
+
+    function updateIngredients(desiredServings: number) {
+      const ratio = desiredServings / baseServings;
+      ingredients.forEach(function (ing, i) {
+        const item = items[i];
+        if (!item) return;
+        const qtyEl = item.querySelector('[data-ingredient-qty]');
+        if (!qtyEl) return;
+        if (ing.quantity === null || ing.scalable === false) return;
+        const scaled = ing.quantity * ratio;
+        const displayQty = formatQty(scaled);
+        const displayUnit = ing.unit ? ' ' + ing.unit : '';
+        qtyEl.textContent = displayQty + displayUnit;
+      });
+    }
+
+    function onServingsChange() {
+      let val = parseInt(input!.value, 10);
+      if (isNaN(val) || val < 1) val = 1;
+      if (val > 50) val = 50;
+      input!.value = String(val);
+      updateIngredients(val);
+      if (announce) {
+        announce.textContent = 'Ingredients updated for ' + val + ' servings.';
+        setTimeout(function () {
+          announce.textContent = '';
+        }, 1500);
+      }
+      decBtn!.disabled = val <= 1;
+      incBtn!.disabled = val >= 50;
+    }
+
+    input.addEventListener('change', onServingsChange);
+    input.addEventListener('input', onServingsChange);
+
+    decBtn.addEventListener('click', function () {
+      const val = parseInt(input!.value, 10) || baseServings;
+      if (val > 1) {
+        input!.value = String(val - 1);
+        onServingsChange();
+      }
+    });
+
+    incBtn.addEventListener('click', function () {
+      const val = parseInt(input!.value, 10) || baseServings;
+      if (val < 50) {
+        input!.value = String(val + 1);
+        onServingsChange();
+      }
+    });
+
+    decBtn.disabled = parseInt(input.value, 10) <= 1;
+    incBtn.disabled = parseInt(input.value, 10) >= 50;
+  })();
+</script>

@@ -1,0 +1,69 @@
+---
+import CategoryPill from './CategoryPill.astro';
+import { formatTime } from '../utils/format';
+
+interface Props {
+  title: string;
+  slug: string;
+  description: string;
+  categories: string[];
+  heroImage: { src: string; alt: string };
+  datePublished: string;
+  times: { prepMinutes: number; cookMinutes: number; totalMinutes: number };
+  difficulty?: string;
+}
+
+const {
+  title,
+  slug,
+  description,
+  categories,
+  heroImage,
+  datePublished,
+  times,
+  difficulty,
+} = Astro.props;
+
+const date = new Date(datePublished).toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
+---
+
+<article class='recipe-card'>
+  <a
+    href={`/recipes/${slug}`}
+    class='recipe-card__image-wrap'
+    tabindex='-1'
+    aria-hidden='true'>
+    {
+      heroImage.src ? (
+        <img
+          src={heroImage.src}
+          alt={heroImage.alt}
+          class='recipe-card__image'
+          loading='lazy'
+          width='400'
+          height='300'
+        />
+      ) : (
+        <div class='recipe-card__image--placeholder'>🍽️</div>
+      )
+    }
+  </a>
+  <div class='recipe-card__body'>
+    <h2 class='recipe-card__title'>
+      <a href={`/recipes/${slug}`}>{title}</a>
+    </h2>
+    <p class='recipe-card__desc'>{description}</p>
+    <div class='recipe-card__cats'>
+      {categories.map((cat) => <CategoryPill name={cat} />)}
+    </div>
+    <div class='recipe-card__meta'>
+      <span>{formatTime(times.totalMinutes)}</span>
+      {difficulty && <span>· {difficulty}</span>}
+      <span>· {date}</span>
+    </div>
+  </div>
+</article>

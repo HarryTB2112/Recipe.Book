@@ -1,0 +1,70 @@
+---
+import { formatTime } from '../utils/format';
+
+interface Props {
+  times: { prepMinutes: number; cookMinutes: number; totalMinutes: number };
+  servings: number;
+  difficulty?: string;
+  cuisine?: string;
+  author?: string;
+}
+
+const { times, servings, difficulty, cuisine, author } = Astro.props;
+---
+
+<div class='recipe-meta' role='list' aria-label='Recipe details'>
+  <div class='recipe-meta__item' role='listitem'>
+    <span class='recipe-meta__label'>Prep</span>
+    <span class='recipe-meta__value'>{formatTime(times.prepMinutes)}</span>
+  </div>
+  <div class='recipe-meta__sep' aria-hidden='true'></div>
+  <div class='recipe-meta__item' role='listitem'>
+    <span class='recipe-meta__label'>Cook</span>
+    <span class='recipe-meta__value'>{formatTime(times.cookMinutes)}</span>
+  </div>
+  <div class='recipe-meta__sep' aria-hidden='true'></div>
+  <div class='recipe-meta__item' role='listitem'>
+    <span class='recipe-meta__label'>Total</span>
+    <span class='recipe-meta__value'>{formatTime(times.totalMinutes)}</span>
+  </div>
+  <div class='recipe-meta__sep' aria-hidden='true'></div>
+  <div class='recipe-meta__item' role='listitem'>
+    <span class='recipe-meta__label'>Serves</span>
+    <span class='recipe-meta__value'>{servings}</span>
+  </div>
+  {
+    difficulty && (
+      <>
+        <div class='recipe-meta__sep' aria-hidden='true' />
+        <div class='recipe-meta__item' role='listitem'>
+          <span class='recipe-meta__label'>Difficulty</span>
+          <span class='recipe-meta__value' style='text-transform: capitalize'>
+            {difficulty}
+          </span>
+        </div>
+      </>
+    )
+  }
+  {
+    cuisine && (
+      <>
+        <div class='recipe-meta__sep' aria-hidden='true' />
+        <div class='recipe-meta__item' role='listitem'>
+          <span class='recipe-meta__label'>Cuisine</span>
+          <span class='recipe-meta__value'>{cuisine}</span>
+        </div>
+      </>
+    )
+  }
+  {
+    author && (
+      <>
+        <div class='recipe-meta__sep' aria-hidden='true' />
+        <div class='recipe-meta__item' role='listitem'>
+          <span class='recipe-meta__label'>By</span>
+          <span class='recipe-meta__value'>{author}</span>
+        </div>
+      </>
+    )
+  }
+</div>

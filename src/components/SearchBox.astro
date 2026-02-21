@@ -1,0 +1,138 @@
+---
+interface Props {
+  placeholder?: string;
+}
+const { placeholder = 'Search recipes…' } = Astro.props;
+---
+
+<div class='search-box' role='search'>
+  <svg
+    class='search-box__icon'
+    width='20'
+    height='20'
+    viewBox='0 0 24 24'
+    fill='none'
+    stroke='currentColor'
+    stroke-width='2'
+    stroke-linecap='round'
+    stroke-linejoin='round'
+    aria-hidden='true'>
+    <circle cx='11' cy='11' r='8'></circle>
+    <path d='m21 21-4.35-4.35'></path>
+  </svg>
+  <input
+    type='search'
+    id='search-input'
+    class='search-box__input'
+    placeholder={placeholder}
+    autocomplete='off'
+    aria-label='Search recipes'
+    aria-controls='recipes-list'
+  />
+  <p
+    class='search-box__results-count'
+    id='results-count'
+    aria-live='polite'
+    aria-atomic='true'>
+  </p>
+</div>
+
+<script>
+  (function () {
+    'use strict';
+
+    const searchInput = document.getElementById(
+      'search-input',
+    ) as HTMLInputElement | null;
+    const resultsList = document.getElementById('recipes-list');
+    const resultsCount = document.getElementById('results-count');
+    const allCards = resultsList
+      ? Array.from(
+          resultsList.querySelectorAll<HTMLElement>('[data-recipe-slug]'),
+        )
+      : [];
+
+    if (!searchInput || !resultsList) return;
+
+    let index: Array<{
+      title: string;
+      slug: string;
+      description: string;
+      categories: string[];
+      tags: string[];
+      datePublished: string;
+    }> | null = null;
+    let fetchStarted = false;
+
+    function normalise(str: string | undefined): string {
+      return (str || '').toLowerCase();
+    }
+
+    function matches(
+      recipe: typeof index extends null
+        ? never
+        : NonNullable<typeof index>[number],
+      query: string,
+    ): boolean {
+      const q = normalise(query);
+      if (!q) return true;
+      return (
+        normalise(recipe.title).includes(q) ||
+        normalise(recipe.description).includes(q) ||
+        (recipe.categories || []).some((c) => normalise(c).includes(q)) ||
+        (recipe.tags || []).some((t) => normalise(t).includes(q))
+      );
+    }
+
+    function applyFilter(query: string) {
+      if (!index) return;
+      const q = query.trim();
+      let visibleCount = 0;
+
+      allCards.forEach(function (card) {
+        const slug = card.getAttribute('data-recipe-slug');
+        const recipe = index!.find((r) => r.slug === slug);
+        if (!recipe) return;
+        const show = matches(recipe, q);
+        card.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+
+      if (resultsCount) {
+        if (!q) {
+          resultsCount.textContent = '';
+        } else {
+          resultsCount.textContent =
+            visibleCount === 0
+              ? 'No recipes found.'
+              : visibleCount === 1
+                ? '1 recipe found.'
+                : visibleCount + ' recipes found.';
+        }
+      }
+
+      const noResults = document.getElementById('no-results');
+      if (noResults) {
+        noResults.hidden = visibleCount > 0 || !q;
+      }
+    }
+
+    function loadIndex() {
+      if (fetchStarted) return;
+      fetchStarted = true;
+      fetch('/search-index.json')
+        .then((res) => res.json())
+        .then((data) => {
+          index = data;
+          applyFilter(searchInput!.value);
+        })
+        .catch((err) => console.warn('Search index failed to load:', err));
+    }
+
+    searchInput.addEventListener('focus', loadIndex, { once: true });
+    searchInput.addEventListener('input', function () {
+      if (!fetchStarted) loadIndex();
+      applyFilter(searchInput!.value);
+    });
+  })();
+</script>

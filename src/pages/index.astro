@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RecipeCard from '../components/RecipeCard.astro';
+import CategoryPill from '../components/CategoryPill.astro';
+import { getCollection } from 'astro:content';
+import { getAllCategories, getRecipeSlug } from '../utils/categories';
+
+const allRecipes = await getCollection('recipes');
+const sorted = allRecipes.sort((a, b) =>
+  b.data.datePublished.localeCompare(a.data.datePublished),
+);
+const recent = sorted.slice(0, 6);
+const categories = await getAllCategories();
+const topCategories = categories.slice(0, 8);
+---
+
+<BaseLayout title="Aimée's Recipe Book">
+  <!-- Hero -->
+  <section class='home-hero'>
+    <div class='container'>
+      <div class='home-hero__inner'>
+        <span class='home-hero__eyebrow'>A collection of your recipes</span>
+        <h1 class='home-hero__title'>
+          Aimée's<br /><em>Recipe Book</em>
+        </h1>
+        <p class='home-hero__desc'>
+          Home-cooked meals, sweet treats and healthy alternatives - gathered in
+          one place.
+        </p>
+        <div class='home-hero__ctas'>
+          <a href='/recipes' class='btn btn--primary'>Browse All Recipes</a>
+          <a href='/categories' class='btn btn--outline'>View Categories</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories strip -->
+  {
+    topCategories.length > 0 && (
+      <section
+        class='section'
+        style='padding-top: var(--space-8); padding-bottom: var(--space-8); border-bottom: 1px solid var(--color-border);'>
+        <div class='container'>
+          <div style='display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: center;'>
+            {topCategories.map((cat) => (
+              <CategoryPill name={cat.name} />
+            ))}
+            {categories.length > 8 && (
+              <a
+                href='/categories'
+                class='category-pill'
+                style='background: var(--color-primary); border-color: var(--color-primary); color: #fff;'>
+                +{categories.length - 8} more
+              </a>
+            )}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Recent Recipes -->
+  <section class='section'>
+    <div class='container'>
+      <div class='section__header'>
+        <h2 class='section__title'>Recent Recipes</h2>
+        <a href='/recipes' class='section__link btn btn--sm btn--outline'
+          >View all</a
+        >
+      </div>
+
+      {
+        recent.length === 0 ? (
+          <div class='no-results'>
+            <div class='no-results__icon'>🍽️</div>
+            <p class='no-results__text'>No recipes yet - check back soon!</p>
+          </div>
+        ) : (
+          <div class='recipe-grid'>
+            {recent.map((recipe) => (
+              <RecipeCard
+                title={recipe.data.title}
+                slug={getRecipeSlug(recipe.id)}
+                description={recipe.data.description}
+                categories={recipe.data.categories}
+                heroImage={recipe.data.heroImage}
+                datePublished={recipe.data.datePublished}
+                times={recipe.data.times}
+                difficulty={recipe.data.difficulty}
+              />
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- Explore Categories CTA -->
+  {
+    categories.length > 0 && (
+      <section
+        class='section'
+        style='background: var(--color-bg-alt); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);'>
+        <div class='container' style='text-align: center;'>
+          <h2 style='font-size: var(--text-3xl); margin-bottom: var(--space-4);'>
+            Browse by Category
+          </h2>
+          <p style='color: var(--color-text-muted); margin-bottom: var(--space-6); max-width: 480px; margin-inline: auto; margin-bottom: var(--space-6);'>
+            From weeknight dinners to weekend bakes, find exactly what you're in
+            the mood for.
+          </p>
+          <a href='/categories' class='btn btn--primary'>
+            Explore Categories
+          </a>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import { slugifyCategory } from '../utils/categories';
+
+interface Props {
+  name: string;
+  active?: boolean;
+  linked?: boolean;
+}
+
+const { name, active = false, linked = true } = Astro.props;
+const href = `/categories/${slugifyCategory(name)}`;
+---
+
+{
+  linked ? (
+    <a
+      href={href}
+      class:list={['category-pill', active && 'category-pill--active']}>
+      {name}
+    </a>
+  ) : (
+    <span class:list={['category-pill', active && 'category-pill--active']}>
+      {name}
+    </span>
+  )
+}

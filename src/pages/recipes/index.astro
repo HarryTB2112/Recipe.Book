@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RecipeCard from '../../components/RecipeCard.astro';
+import SearchBox from '../../components/SearchBox.astro';
+import { getCollection } from 'astro:content';
+import { assertUniqueSlugs, getRecipeSlug } from '../../utils/categories';
+
+// Validate slug uniqueness at build time
+await assertUniqueSlugs();
+
+const allRecipes = await getCollection('recipes');
+const sorted = allRecipes.sort((a, b) =>
+  b.data.datePublished.localeCompare(a.data.datePublished),
+);
+---
+
+<BaseLayout
+  title='All Recipes'
+  description="Browse the full collection of recipes in Aimée's Recipe Book.">
+  <div class='container'>
+    <!-- Page header -->
+    <div class='page-hero'>
+      <h1 class='page-hero__title'>All Recipes</h1>
+      <p class='page-hero__subtitle'>
+        {
+          sorted.length === 0
+            ? 'No recipes yet — check back soon!'
+            : `${sorted.length} recipe${sorted.length === 1 ? '' : 's'} and counting.`
+        }
+      </p>
+    </div>
+
+    <!-- Search -->
+    <SearchBox placeholder='Search recipes by name, ingredient, or category…' />
+
+    <!-- No-results message (hidden by default, shown by search.js) -->
+    <div id='no-results' class='no-results' hidden>
+      <div class='no-results__icon'>🔍</div>
+      <p class='no-results__text'>
+        No recipes match your search. Try something else!
+      </p>
+    </div>
+
+    <!-- Recipe grid -->
+    <div class='recipe-grid' id='recipes-list' aria-label='Recipe list'>
+      {
+        sorted.map((recipe) => (
+          <div data-recipe-slug={getRecipeSlug(recipe.id)}>
+            <RecipeCard
+              title={recipe.data.title}
+              slug={getRecipeSlug(recipe.id)}
+              description={recipe.data.description}
+              categories={recipe.data.categories}
+              heroImage={recipe.data.heroImage}
+              datePublished={recipe.data.datePublished}
+              times={recipe.data.times}
+              difficulty={recipe.data.difficulty}
+            />
+          </div>
+        ))
+      }
+    </div>
+
+    {
+      sorted.length === 0 && (
+        <div class='no-results'>
+          <div class='no-results__icon'>🍽️</div>
+          <p class='no-results__text'>No recipes yet — come back soon!</p>
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>
