@@ -12,7 +12,7 @@ times:
   totalMinutes: 30
 difficulty: 'easy'
 heroImage:
-  src: '/images/recipes/flourless-brownie-cookies/hero.webp'
+  src: ''
   alt: 'Three dark, crackle-topped flourless brownie cookies studded with chocolate chips'
 ingredients:
   - item: 'Icing sugar'
