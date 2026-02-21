@@ -2,7 +2,8 @@
 title: 'Chestnut & Sausage Pasta'
 description: 'A rich, wintry pasta with sausage, mushroom, roasted chestnuts and cavolo nero. Made for cold evenings.'
 datePublished: '2026-02-21'
-categories: ['Pasta', 'Dinner', 'Italian']
+categories: ['Pasta & Noodles']
+protein: ['Pork']
 tags:
   [
     'pasta',

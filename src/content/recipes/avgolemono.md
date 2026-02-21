@@ -2,7 +2,9 @@
 title: 'Avgolemono'
 description: 'The Greek egg-lemon soup. Silky, velvety broth with rice, shredded chicken, and a sharp citrus lift, deceptively simple and deeply comforting.'
 datePublished: '2026-02-21'
-categories: ['Dinner', 'Soup', 'Greek']
+categories: ['Soups']
+diet: ['Gluten-Free', 'Dairy-Free']
+protein: ['Chicken']
 tags:
   [
     'soup',

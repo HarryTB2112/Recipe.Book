@@ -2,7 +2,9 @@
 title: 'Parmesan Chicken Soup'
 description: 'A warming, nourishing soup with poached chicken breast, leek, cannellini beans, and kale in a light rosemary broth, finished with Parmesan.'
 datePublished: '2026-02-21'
-categories: ['Soup', 'Chicken', 'Dinner']
+categories: ['Soups']
+diet: ['Gluten-Free']
+protein: ['Chicken']
 tags:
   [
     'soup',

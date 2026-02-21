@@ -2,7 +2,8 @@
 title: 'Flourless Brownie Cookies'
 description: 'Fudgy, crackle-topped cookies made without flour. Deep cocoa flavour, gooey chocolate chips, and naturally gluten-free.'
 datePublished: '2026-02-21'
-categories: ['Baking', 'Cookies', 'Dessert', 'Gluten-Free']
+categories: ['Baking', 'Biscuits & Cookies', 'Desserts']
+diet: ['Gluten-Free']
 tags:
   ['chocolate', 'brownie', 'cookies', 'gluten-free', 'flourless', 'espresso']
 servings: 14

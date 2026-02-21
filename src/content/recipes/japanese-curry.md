@@ -2,7 +2,8 @@
 title: 'Japanese Curry'
 description: 'The Japanese curry made with pork mince and air-fried crispy potatoes, with that unmistakable glossy curry sauce from the roux blocks.'
 datePublished: '2026-02-21'
-categories: ['Curry', 'Japanese', 'Dinner']
+categories: ['Curries & Stews']
+protein: ['Pork']
 tags: ['japanese', 'curry', 'pork', 'potato', 'rice', 'mild', 'family', 'comfort food', 'dairy-free']
 servings: 5
 times:

@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content';
+import { CATEGORIES, DIETS, PROTEINS } from '../data/taxonomy';
 
 const unitEnum = z.enum([
   'g',
@@ -29,7 +30,17 @@ const recipesCollection = defineCollection({
     datePublished: z
       .string()
       .regex(/^\d{4}-\d{2}-\d{2}$/, 'Must be YYYY-MM-DD'),
-    categories: z.array(z.string()).min(1),
+    categories: z
+      .array(z.enum(CATEGORIES as unknown as [string, ...string[]]))
+      .min(1),
+    diet: z
+      .array(z.enum(DIETS as unknown as [string, ...string[]]))
+      .optional()
+      .default([]),
+    protein: z
+      .array(z.enum(PROTEINS as unknown as [string, ...string[]]))
+      .optional()
+      .default([]),
     servings: z.number().int().positive(),
     times: z.object({
       prepMinutes: z.number().int().nonnegative(),

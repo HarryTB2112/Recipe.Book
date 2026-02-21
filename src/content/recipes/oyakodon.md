@@ -2,7 +2,9 @@
 title: 'Oyakodon'
 description: 'The ultimate Japanese comfort bowl. Tender chicken and soft-set egg simmered in a sweet-savoury dashi broth with mirin and soy, spooned over steaming white rice.'
 datePublished: '2026-02-21'
-categories: ['Japanese', 'Chicken', 'Rice Dishes', 'Dinner']
+categories: ['Rice & Grains']
+diet: ['Dairy-Free']
+protein: ['Chicken', 'Eggs']
 tags:
   [
     'japanese',

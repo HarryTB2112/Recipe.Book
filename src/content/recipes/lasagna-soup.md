@@ -2,7 +2,8 @@
 title: 'Lasagna Soup'
 description: 'All the comfort of a slow-baked lasagna in a bowl, ready in under an hour. Rich pork and tomato broth, broken lasagna sheets, and a shower of melted mozzarella and Parmesan.'
 datePublished: '2026-02-21'
-categories: ['Soup', 'Pasta', 'Dinner']
+categories: ['Soups', 'Pasta & Noodles']
+protein: ['Pork']
 tags:
   [
     'soup',

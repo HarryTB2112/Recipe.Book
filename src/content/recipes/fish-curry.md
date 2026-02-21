@@ -2,7 +2,8 @@
 title: 'Fish Curry'
 description: 'A vibrant, blended curry paste of chilli, coriander and ginger forms the base for this fragrant coconut fish curry. Quick to make and full of fresh flavour.'
 datePublished: '2026-02-21'
-categories: ['Curry', 'Fish & Seafood', 'Dinner']
+categories: ['Curries & Stews']
+protein: ['Fish']
 tags: ['curry', 'fish', 'coconut', 'chilli', 'coriander', 'quick', 'gluten-free', 'dairy-free']
 servings: 4
 times:

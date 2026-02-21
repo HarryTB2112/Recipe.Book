@@ -2,7 +2,8 @@
 title: 'Chicken Chilli'
 description: 'A hearty, smoky chilli packed with vegetables, black beans, chipotle and a secret square of dark chocolate.'
 datePublished: '2026-02-21'
-categories: ['Chicken', 'Dinner', 'American']
+categories: ['Curries & Stews']
+protein: ['Chicken']
 tags:
   [
     'chilli',
