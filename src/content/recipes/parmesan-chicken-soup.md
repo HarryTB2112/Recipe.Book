@@ -60,7 +60,7 @@ ingredients:
     note: 'minced'
   - item: 'Fresh rosemary sprig'
     quantity: 1
-    unit: piece
+    unit: null
   - item: 'Cannellini beans'
     quantity: 400
     unit: 'ml'
