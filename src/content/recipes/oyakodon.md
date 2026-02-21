@@ -30,15 +30,15 @@ heroImage:
 ingredients:
   - item: 'Chicken thighs (boneless, skinless)'
     quantity: 6
-    unit: 'piece'
+    unit: null
     note: 'sliced into bite-sized pieces'
   - item: 'Eggs'
     quantity: 4
-    unit: 'piece'
+    unit: null
     note: 'large'
   - item: 'Onion'
     quantity: 1
-    unit: 'piece'
+    unit: null
     note: 'thinly sliced'
   - item: 'Dashi stock'
     quantity: 160
@@ -55,7 +55,7 @@ ingredients:
     unit: 'tsp'
   - item: 'Spring onions'
     quantity: 2
-    unit: 'piece'
+    unit: null
     note: 'finely sliced, to garnish'
     scalable: false
   - item: 'Fresh basil'

@@ -30,29 +30,29 @@ heroImage:
 ingredients:
   - item: 'Chicken breasts'
     quantity: 2
-    unit: 'piece'
+    unit: null
     note: 'or use leg portions'
   - item: 'Chicken stock cube'
     quantity: 1
-    unit: 'piece'
+    unit: null
   - item: 'Water'
     quantity: 1
     unit: 'l'
   - item: 'Leek'
     quantity: 1
-    unit: 'piece'
+    unit: null
     note: 'sliced'
   - item: 'Carrot'
     quantity: 1
-    unit: 'piece'
+    unit: null
     note: 'diced'
   - item: 'Celery sticks'
     quantity: 2
-    unit: 'piece'
+    unit: null
     note: 'diced'
   - item: 'Onion'
     quantity: 1
-    unit: 'piece'
+    unit: null
     note: 'diced'
   - item: 'Garlic clove'
     quantity: 1

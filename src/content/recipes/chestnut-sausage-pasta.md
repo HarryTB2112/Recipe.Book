@@ -46,13 +46,13 @@ ingredients:
   - item: 'Chestnut mushrooms'
     quantity: 240
     unit: 'g'
-  - item: 'Handful of cavolo nero or kale'
+  - item: 'Handfuls of cavolo nero or kale'
     quantity: 6
-    unit: 'piece'
+    unit: null
     note: 'stems removed, leaves torn'
   - item: 'Onion'
     quantity: 1
-    unit: 'piece'
+    unit: null
     note: 'finely diced'
   - item: 'Garlic cloves'
     quantity: 4

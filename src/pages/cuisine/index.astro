@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllCuisines } from '../../utils/categories';
+
+const cuisines = await getAllCuisines();
+---
+
+<BaseLayout
+  title='Browse by Cuisine'
+  description="Browse all cuisines in Aimée's Recipe Book.">
+  <div class='container'>
+    <div class='page-hero'>
+      <h1 class='page-hero__title'>Cuisine</h1>
+      <p class='page-hero__subtitle'>Explore recipes from around the world.</p>
+    </div>
+
+    {
+      cuisines.length === 0 ? (
+        <div class='no-results'>
+          <div class='no-results__icon'>🌍</div>
+          <p class='no-results__text'>No cuisines yet.</p>
+        </div>
+      ) : (
+        <div class='categories-grid'>
+          {cuisines.map((cuisine) => (
+            <a href={`/cuisine/${cuisine.slug}`} class='category-card'>
+              <span class='category-card__name'>{cuisine.name}</span>
+              <span class='category-card__count'>
+                {cuisine.count} recipe{cuisine.count === 1 ? '' : 's'}
+              </span>
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>

@@ -42,15 +42,15 @@ ingredients:
     note: '1 tin'
   - item: 'Onion'
     quantity: 1
-    unit: 'piece'
+    unit: null
     note: 'diced'
   - item: 'Carrot'
     quantity: 1
-    unit: 'piece'
+    unit: null
     note: 'diced'
   - item: 'Celery stalk'
     quantity: 1
-    unit: 'piece'
+    unit: null
     note: 'diced'
   - item: 'Chestnut mushrooms'
     quantity: 150

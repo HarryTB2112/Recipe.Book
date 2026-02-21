@@ -33,14 +33,14 @@ ingredients:
     note: '1 thumb-sized piece'
   - item: 'Red chillies'
     quantity: 2
-    unit: 'piece'
+    unit: null
   - item: 'Fresh coriander'
     quantity: null
     unit: null
     note: '1 large bunch, plus extra to serve'
   - item: 'Onion'
     quantity: 1
-    unit: 'piece'
+    unit: null
     note: 'roughly chopped'
   - item: 'Ground turmeric'
     quantity: 2

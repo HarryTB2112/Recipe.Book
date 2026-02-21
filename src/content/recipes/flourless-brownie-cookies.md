@@ -28,7 +28,7 @@ ingredients:
     scalable: false
   - item: 'Egg whites'
     quantity: 3
-    unit: 'piece'
+    unit: null
     note: 'large'
   - item: 'Dark chocolate chips'
     quantity: 170

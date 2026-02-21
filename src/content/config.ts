@@ -9,7 +9,6 @@ const unitEnum = z.enum([
   'tsp',
   'tbsp',
   'cup',
-  'piece',
   'clove',
   'pinch',
 ]);
@@ -55,7 +54,7 @@ const recipesCollection = defineCollection({
     difficulty: z.enum(['easy', 'medium', 'hard']).optional(),
     cuisine: z.string().optional(),
     tags: z.array(z.string()).optional().default([]),
-    author: z.string().optional().default('Aimée'),
+    author: z.string().optional().default('Harry'),
     updatedAt: z
       .string()
       .regex(/^\d{4}-\d{2}-\d{2}$/)

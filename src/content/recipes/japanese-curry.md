@@ -25,15 +25,15 @@ ingredients:
     note: 'cut into 3cm cubes'
   - item: 'Carrots'
     quantity: 2
-    unit: 'piece'
+    unit: null
     note: 'diced'
   - item: 'Onion'
     quantity: 1
-    unit: 'piece'
+    unit: null
     note: 'diced'
   - item: 'Japanese curry blocks'
     quantity: 4
-    unit: 'piece'
+    unit: null
     note: 'S&B Golden Curry'
   - item: 'Water'
     quantity: 700

@@ -21,7 +21,7 @@ times:
   cookMinutes: 50
   totalMinutes: 65
 difficulty: 'easy'
-cuisine: 'Tex-Mex'
+cuisine: 'Mexican'
 heroImage:
   src: ''
   alt: 'A bowl of dark, smoky chicken chilli topped with grated cheddar and soured cream'
@@ -39,26 +39,26 @@ ingredients:
     unit: 'ml'
   - item: 'Chicken stock cube'
     quantity: 1
-    unit: 'piece'
+    unit: null
   - item: 'Red onions'
     quantity: 2
-    unit: 'piece'
+    unit: null
     note: 'diced'
   - item: 'Carrots'
     quantity: 2
-    unit: 'piece'
+    unit: null
     note: 'diced'
   - item: 'Celery sticks'
     quantity: 2
-    unit: 'piece'
+    unit: null
     note: 'diced'
   - item: 'Green pepper'
     quantity: 1
-    unit: 'piece'
+    unit: null
     note: 'diced'
   - item: 'Red pepper'
     quantity: 1
-    unit: 'piece'
+    unit: null
     note: 'diced'
   - item: 'Chestnut mushrooms'
     quantity: null
@@ -78,7 +78,7 @@ ingredients:
     unit: 'tsp'
   - item: 'Piece of Dark chocolate'
     quantity: 1
-    unit: 'piece'
+    unit: null
   - item: 'Cheddar'
     quantity: 50
     unit: 'g'

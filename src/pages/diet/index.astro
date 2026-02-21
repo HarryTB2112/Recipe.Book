@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllDiets } from '../../utils/categories';
+
+const diets = await getAllDiets();
+---
+
+<BaseLayout
+  title='Browse by Diet'
+  description="Browse recipes by dietary requirement in Aimée's Recipe Book.">
+  <div class='container'>
+    <div class='page-hero'>
+      <h1 class='page-hero__title'>Diet</h1>
+      <p class='page-hero__subtitle'>
+        Find recipes that suit your dietary needs.
+      </p>
+    </div>
+
+    {
+      diets.length === 0 ? (
+        <div class='no-results'>
+          <div class='no-results__icon'>🥗</div>
+          <p class='no-results__text'>No dietary categories yet.</p>
+        </div>
+      ) : (
+        <div class='categories-grid'>
+          {diets.map((diet) => (
+            <a href={`/diet/${diet.slug}`} class='category-card'>
+              <span class='category-card__name'>{diet.name}</span>
+              <span class='category-card__count'>
+                {diet.count} recipe{diet.count === 1 ? '' : 's'}
+              </span>
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>

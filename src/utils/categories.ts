@@ -62,6 +62,55 @@ export function getRecipeSlug(id: string): string {
 }
 
 /**
+ * Get all unique cuisines with their recipe counts.
+ */
+export async function getAllCuisines(): Promise<
+  { name: string; slug: string; count: number }[]
+> {
+  const recipes = await getCollection('recipes');
+  const map = new Map<string, { name: string; count: number }>();
+
+  for (const recipe of recipes) {
+    if (!recipe.data.cuisine) continue;
+    const slug = slugifyCategory(recipe.data.cuisine);
+    if (map.has(slug)) {
+      map.get(slug)!.count++;
+    } else {
+      map.set(slug, { name: recipe.data.cuisine, count: 1 });
+    }
+  }
+
+  return Array.from(map.entries())
+    .map(([slug, { name, count }]) => ({ name, slug, count }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
+ * Get all unique diet labels with their recipe counts.
+ */
+export async function getAllDiets(): Promise<
+  { name: string; slug: string; count: number }[]
+> {
+  const recipes = await getCollection('recipes');
+  const map = new Map<string, { name: string; count: number }>();
+
+  for (const recipe of recipes) {
+    for (const diet of recipe.data.diet ?? []) {
+      const slug = slugifyCategory(diet);
+      if (map.has(slug)) {
+        map.get(slug)!.count++;
+      } else {
+        map.set(slug, { name: diet, count: 1 });
+      }
+    }
+  }
+
+  return Array.from(map.entries())
+    .map(([slug, { name, count }]) => ({ name, slug, count }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
  * Verify all recipe slugs are unique (call at build time).
  */
 export async function assertUniqueSlugs(): Promise<void> {

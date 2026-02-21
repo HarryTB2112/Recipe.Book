@@ -29,7 +29,7 @@ heroImage:
 ingredients:
   - item: 'Chicken thighs (bone-in, skin-on)'
     quantity: 4
-    unit: 'piece'
+    unit: null
     note: 'Feel free to use whole leg portions, M&S do them for £1.50'
   - item: 'Chicken stock'
     quantity: 1
@@ -41,14 +41,14 @@ ingredients:
     note: 'or orzo pasta'
   - item: 'Eggs'
     quantity: 2
-    unit: 'piece'
+    unit: null
     note: 'large'
   - item: 'Zest and juice of lemons'
     quantity: 2
-    unit: 'piece'
+    unit: null
   - item: 'Bay leaves'
     quantity: 2
-    unit: 'piece'
+    unit: null
     scalable: false
   - item: 'Salt'
     quantity: 1

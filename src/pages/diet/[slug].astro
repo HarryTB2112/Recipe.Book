@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RecipeCard from '../../components/RecipeCard.astro';
+import { getCollection } from 'astro:content';
+import {
+  getAllDiets,
+  slugifyCategory,
+  getRecipeSlug,
+} from '../../utils/categories';
+
+export async function getStaticPaths() {
+  const diets = await getAllDiets();
+  const allRecipes = await getCollection('recipes');
+
+  return diets.map((diet) => {
+    const recipes = allRecipes
+      .filter((r) => r.data.diet?.some((d) => slugifyCategory(d) === diet.slug))
+      .sort((a, b) => b.data.datePublished.localeCompare(a.data.datePublished));
+
+    return {
+      params: { slug: diet.slug },
+      props: { diet, recipes },
+    };
+  });
+}
+
+const { diet, recipes } = Astro.props;
+---
+
+<BaseLayout
+  title={`${diet.name} Recipes`}
+  description={`Browse all ${diet.name} recipes in Aimée's Recipe Book.`}>
+  <div class='container'>
+    <nav aria-label='Breadcrumb' style='padding-top: var(--space-6);'>
+      <ol class='breadcrumb'>
+        <li><a href='/'>Home</a></li>
+        <li><a href='/diet'>Diet</a></li>
+        <li aria-current='page'>{diet.name}</li>
+      </ol>
+    </nav>
+
+    <div class='page-hero' style='padding-top: var(--space-4);'>
+      <h1 class='page-hero__title'>{diet.name}</h1>
+      <p class='page-hero__subtitle'>
+        {recipes.length} recipe{recipes.length === 1 ? '' : 's'}
+      </p>
+    </div>
+
+    {
+      recipes.length === 0 ? (
+        <div class='no-results'>
+          <div class='no-results__icon'>🍽️</div>
+          <p class='no-results__text'>No recipes in this category yet.</p>
+        </div>
+      ) : (
+        <div class='recipe-grid'>
+          {recipes.map((recipe) => (
+            <RecipeCard
+              title={recipe.data.title}
+              slug={getRecipeSlug(recipe.id)}
+              description={recipe.data.description}
+              categories={recipe.data.categories}
+              heroImage={recipe.data.heroImage}
+              datePublished={recipe.data.datePublished}
+              times={recipe.data.times}
+              difficulty={recipe.data.difficulty}
+            />
+          ))}
+        </div>
+      )
+    }
+
+    <div style='margin-top: var(--space-10); text-align: center;'>
+      <a href='/diet' class='btn btn--outline'>← All Diets</a>
+    </div>
+  </div>
+</BaseLayout>
