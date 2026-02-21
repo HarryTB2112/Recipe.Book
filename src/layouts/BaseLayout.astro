@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import '../styles/global.css';
 
 interface Props {
@@ -64,5 +65,6 @@ const fullTitle =
       <slot />
     </main>
     <Footer />
+    <SpeedInsights />
   </body>
 </html>
