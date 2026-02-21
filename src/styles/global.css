@@ -7,52 +7,52 @@
    -------------------------------------------------------------------------- */
 :root {
   /* Colour Palette — warm terracotta + cream + sage */
-  --color-primary:        #c05e3c;   /* terracotta / main brand */
-  --color-primary-dark:   #9b4830;   /* deeper terracotta for hover */
-  --color-primary-light:  #e8a98a;   /* light terracotta for accents */
-  --color-secondary:      #5a7a5a;   /* sage green */
+  --color-primary: #c05e3c; /* terracotta / main brand */
+  --color-primary-dark: #9b4830; /* deeper terracotta for hover */
+  --color-primary-light: #e8a98a; /* light terracotta for accents */
+  --color-secondary: #5a7a5a; /* sage green */
   --color-secondary-dark: #3f5c3f;
-  --color-secondary-light:#8fad8f;
+  --color-secondary-light: #8fad8f;
 
-  --color-bg:             #fdf6ee;   /* warm cream background */
-  --color-bg-alt:         #f5ebe0;   /* slightly deeper cream */
-  --color-bg-card:        #fffaf5;   /* card background */
-  --color-surface:        #ffffff;
+  --color-bg: #fdf6ee; /* warm cream background */
+  --color-bg-alt: #f5ebe0; /* slightly deeper cream */
+  --color-bg-card: #fffaf5; /* card background */
+  --color-surface: #ffffff;
 
-  --color-text:           #2c1f14;   /* dark brown for body text */
-  --color-text-muted:     #7a6652;   /* muted brown */
-  --color-text-light:     #a89282;
-  --color-border:         #e2d0bc;
-  --color-border-strong:  #c9b49a;
+  --color-text: #2c1f14; /* dark brown for body text */
+  --color-text-muted: #7a6652; /* muted brown */
+  --color-text-light: #a89282;
+  --color-border: #e2d0bc;
+  --color-border-strong: #c9b49a;
 
   /* Typography */
   --font-heading: 'Georgia', 'Times New Roman', serif;
-  --font-body:    system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono:    'Courier New', Courier, monospace;
+  --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Courier New', Courier, monospace;
 
-  --text-xs:   0.75rem;
-  --text-sm:   0.875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
   --text-base: 1rem;
-  --text-lg:   1.125rem;
-  --text-xl:   1.25rem;
-  --text-2xl:  1.5rem;
-  --text-3xl:  1.875rem;
-  --text-4xl:  2.25rem;
-  --text-5xl:  3rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
 
-  --leading-tight:  1.25;
-  --leading-snug:   1.375;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
   --leading-normal: 1.6;
-  --leading-relaxed:1.75;
+  --leading-relaxed: 1.75;
 
   /* Spacing */
-  --space-1:  0.25rem;
-  --space-2:  0.5rem;
-  --space-3:  0.75rem;
-  --space-4:  1rem;
-  --space-5:  1.25rem;
-  --space-6:  1.5rem;
-  --space-8:  2rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
@@ -73,7 +73,7 @@
 
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(44, 31, 20, 0.08);
-  --shadow-md: 0 4px 12px rgba(44, 31, 20, 0.10);
+  --shadow-md: 0 4px 12px rgba(44, 31, 20, 0.1);
   --shadow-lg: 0 8px 24px rgba(44, 31, 20, 0.12);
 
   /* Transitions */
@@ -87,7 +87,9 @@
 /* --------------------------------------------------------------------------
    Reset & Base
    -------------------------------------------------------------------------- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -131,23 +133,43 @@ a:hover {
   color: var(--color-primary-dark);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   line-height: var(--leading-tight);
   color: var(--color-text);
   font-weight: normal;
 }
 
-h1 { font-size: var(--text-4xl); }
-h2 { font-size: var(--text-3xl); }
-h3 { font-size: var(--text-2xl); }
-h4 { font-size: var(--text-xl); }
-h5 { font-size: var(--text-lg); }
+h1 {
+  font-size: var(--text-4xl);
+}
+h2 {
+  font-size: var(--text-3xl);
+}
+h3 {
+  font-size: var(--text-2xl);
+}
+h4 {
+  font-size: var(--text-xl);
+}
+h5 {
+  font-size: var(--text-lg);
+}
 
-p { margin-bottom: var(--space-4); }
-p:last-child { margin-bottom: 0; }
+p {
+  margin-bottom: var(--space-4);
+}
+p:last-child {
+  margin-bottom: 0;
+}
 
-ul, ol {
+ul,
+ol {
   padding-left: var(--space-6);
   margin-bottom: var(--space-4);
 }
@@ -180,7 +202,7 @@ hr {
   border-bottom: var(--border-width) solid var(--color-border);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 200;
   height: var(--nav-height);
   box-shadow: var(--shadow-sm);
   display: flex;
@@ -190,7 +212,6 @@ hr {
 .site-header__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 100%;
   gap: var(--space-4);
 }
@@ -202,20 +223,25 @@ hr {
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
+  margin-right: auto;
 }
 
 .site-header__brand:hover {
   color: var(--color-primary-dark);
 }
 
+/* Desktop nav — hidden on mobile */
 .site-nav {
+  display: none;
+}
+
+.site-nav__list {
   display: flex;
   align-items: center;
   gap: var(--space-1);
   list-style: none;
   padding: 0;
   margin: 0;
-  flex-wrap: wrap;
 }
 
 .site-nav__link {
@@ -226,13 +252,166 @@ hr {
   font-size: var(--text-sm);
   font-weight: 500;
   border-radius: var(--radius-sm);
-  transition: color var(--transition-fast), background-color var(--transition-fast);
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast);
 }
 
 .site-nav__link:hover,
-.site-nav__link[aria-current="page"] {
+.site-nav__link[aria-current='page'] {
   color: var(--color-primary);
   background-color: var(--color-bg-alt);
+}
+
+/* --------------------------------------------------------------------------
+   Hamburger Toggle Button — shown on mobile, hidden on desktop
+   -------------------------------------------------------------------------- */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  transition: background-color var(--transition-fast);
+}
+
+.nav-toggle:hover {
+  background-color: var(--color-bg-alt);
+}
+
+.nav-toggle__bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: background-color var(--transition-fast);
+}
+
+/* Show desktop nav, hide hamburger — must come AFTER base .nav-toggle styles */
+@media (min-width: 640px) {
+  .site-nav {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Nav Overlay (backdrop)
+   -------------------------------------------------------------------------- */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 31, 20, 0.5);
+  z-index: 300;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.mobile-nav-overlay--visible {
+  display: block;
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Nav Drawer
+   -------------------------------------------------------------------------- */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 100vw);
+  background: var(--color-surface);
+  z-index: 400;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-lg);
+  overflow-y: auto;
+}
+
+.mobile-nav--open {
+  transform: translateX(0);
+}
+
+.mobile-nav__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: var(--border-width) solid var(--color-border);
+  min-height: var(--nav-height);
+  flex-shrink: 0;
+}
+
+.mobile-nav__brand {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  color: var(--color-primary);
+}
+
+.mobile-nav__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.mobile-nav__close:hover {
+  background-color: var(--color-bg-alt);
+  color: var(--color-text);
+}
+
+.mobile-nav__list {
+  list-style: none;
+  padding: var(--space-4) 0;
+  margin: 0;
+  flex: 1;
+}
+
+.mobile-nav__link {
+  display: block;
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.mobile-nav__link:hover,
+.mobile-nav__link[aria-current='page'] {
+  color: var(--color-primary);
+  background-color: var(--color-bg-alt);
+  border-left-color: var(--color-primary);
 }
 
 /* --------------------------------------------------------------------------
@@ -302,7 +481,9 @@ hr {
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: box-shadow var(--transition-base), transform var(--transition-base);
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
   display: flex;
   flex-direction: column;
 }
@@ -336,7 +517,11 @@ hr {
   align-items: center;
   justify-content: center;
   font-size: 3rem;
-  background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-border) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-alt) 0%,
+    var(--color-border) 100%
+  );
 }
 
 .recipe-card__body {
@@ -397,7 +582,10 @@ hr {
   font-size: var(--text-xs);
   color: var(--color-text-muted);
   text-decoration: none;
-  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
   white-space: nowrap;
 }
 
@@ -487,7 +675,9 @@ hr {
   font-size: var(--text-lg);
   cursor: pointer;
   line-height: 1;
-  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
   flex-shrink: 0;
 }
 
@@ -564,8 +754,11 @@ hr {
    Search Box
    -------------------------------------------------------------------------- */
 .search-box {
-  position: relative;
   margin-bottom: var(--space-6);
+}
+
+.search-box__field {
+  position: relative;
 }
 
 .search-box__input {
@@ -577,13 +770,36 @@ hr {
   font-size: var(--text-base);
   background: var(--color-surface);
   color: var(--color-text);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  accent-color: var(--color-primary);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .search-box__input:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(192, 94, 60, 0.15);
+}
+
+/* Style the native search cancel button to match brand colour */
+.search-box__input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  background-color: var(--color-text-light);
+  border-radius: var(--radius-full);
+  /* × icon as a mask */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 4l8 8M12 4l-8 8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 4l8 8M12 4l-8 8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
+
+.search-box__input::-webkit-search-cancel-button:hover {
+  background-color: var(--color-primary);
 }
 
 .search-box__icon {
@@ -619,7 +835,11 @@ hr {
 }
 
 .page-hero--decorated {
-  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-bg) 0%,
+    var(--color-bg-alt) 100%
+  );
   border-bottom: var(--border-width) solid var(--color-border);
 }
 
@@ -718,7 +938,11 @@ hr {
   text-decoration: none;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
   white-space: nowrap;
 }
 
@@ -925,7 +1149,9 @@ hr {
   padding-left: var(--space-6);
 }
 
-.prose ul > li { margin-bottom: var(--space-2); }
+.prose ul > li {
+  margin-bottom: var(--space-2);
+}
 
 .prose img {
   border-radius: var(--radius-md);
@@ -933,8 +1159,12 @@ hr {
   max-width: 100%;
 }
 
-.prose strong { font-weight: 700; }
-.prose em { font-style: italic; }
+.prose strong {
+  font-weight: 700;
+}
+.prose em {
+  font-style: italic;
+}
 
 .prose code {
   font-family: var(--font-mono);
@@ -957,7 +1187,9 @@ hr {
   margin-bottom: var(--space-6);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-sm);
-  transition: color var(--transition-fast), background-color var(--transition-fast);
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast);
 }
 
 .back-link:hover {
@@ -980,7 +1212,10 @@ hr {
   border-radius: var(--radius-lg);
   padding: var(--space-5);
   text-decoration: none;
-  transition: box-shadow var(--transition-base), transform var(--transition-base), border-color var(--transition-base);
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base),
+    border-color var(--transition-base);
   display: block;
 }
 
@@ -1100,7 +1335,9 @@ hr {
   color: var(--color-text-muted);
 }
 
-.breadcrumb a:hover { color: var(--color-primary); }
+.breadcrumb a:hover {
+  color: var(--color-primary);
+}
 
 /* --------------------------------------------------------------------------
    Utility: visually hidden (accessibility)
@@ -1135,25 +1372,17 @@ hr {
    Responsive
    -------------------------------------------------------------------------- */
 @media (max-width: 640px) {
-  :root {
-    --container-padding: var(--space-4);
+  h1 {
+    font-size: var(--text-3xl);
   }
-
-  h1 { font-size: var(--text-3xl); }
-  h2 { font-size: var(--text-2xl); }
+  h2 {
+    font-size: var(--text-2xl);
+  }
 
   .recipe-grid {
     grid-template-columns: 1fr;
   }
 
-  .site-nav {
-    gap: 0;
-  }
-
-  .site-nav__link {
-    padding: var(--space-2);
-    font-size: var(--text-xs);
-  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1166,6 +1395,9 @@ hr {
   .servings-scaler,
   .back-link,
   .more-from,
+  .mobile-nav,
+  .mobile-nav-overlay,
+  .nav-toggle,
   .btn,
   nav {
     display: none !important;

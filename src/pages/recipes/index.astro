@@ -31,7 +31,10 @@ const sorted = allRecipes.sort((a, b) =>
     </div>
 
     <!-- Search -->
-    <SearchBox placeholder='Search recipes by name, ingredient, or category…' />
+    <SearchBox
+      placeholder='Search recipes by name, ingredient, or category…'
+      placeholderShort='Search recipes…'
+    />
 
     <!-- No-results message (hidden by default, shown by search.js) -->
     <div id='no-results' class='no-results' hidden>

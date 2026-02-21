@@ -1,34 +1,40 @@
 ---
 interface Props {
   placeholder?: string;
+  placeholderShort?: string;
 }
-const { placeholder = 'Search recipes…' } = Astro.props;
+const { placeholder = 'Search recipes…', placeholderShort = 'Search…' } =
+  Astro.props;
 ---
 
 <div class='search-box' role='search'>
-  <svg
-    class='search-box__icon'
-    width='20'
-    height='20'
-    viewBox='0 0 24 24'
-    fill='none'
-    stroke='currentColor'
-    stroke-width='2'
-    stroke-linecap='round'
-    stroke-linejoin='round'
-    aria-hidden='true'>
-    <circle cx='11' cy='11' r='8'></circle>
-    <path d='m21 21-4.35-4.35'></path>
-  </svg>
-  <input
-    type='search'
-    id='search-input'
-    class='search-box__input'
-    placeholder={placeholder}
-    autocomplete='off'
-    aria-label='Search recipes'
-    aria-controls='recipes-list'
-  />
+  <div class='search-box__field'>
+    <svg
+      class='search-box__icon'
+      width='20'
+      height='20'
+      viewBox='0 0 24 24'
+      fill='none'
+      stroke='currentColor'
+      stroke-width='2'
+      stroke-linecap='round'
+      stroke-linejoin='round'
+      aria-hidden='true'>
+      <circle cx='11' cy='11' r='8'></circle>
+      <path d='m21 21-4.35-4.35'></path>
+    </svg>
+    <input
+      type='search'
+      id='search-input'
+      class='search-box__input'
+      placeholder={placeholder}
+      data-placeholder-full={placeholder}
+      data-placeholder-short={placeholderShort}
+      autocomplete='off'
+      aria-label='Search recipes'
+      aria-controls='recipes-list'
+    />
+  </div>
   <p
     class='search-box__results-count'
     id='results-count'
@@ -44,6 +50,19 @@ const { placeholder = 'Search recipes…' } = Astro.props;
     const searchInput = document.getElementById(
       'search-input',
     ) as HTMLInputElement | null;
+
+    // Responsive placeholder — swap to short version on narrow viewports
+    if (searchInput) {
+      const full = searchInput.dataset.placeholderFull ?? '';
+      const short = searchInput.dataset.placeholderShort ?? '';
+      const mq = window.matchMedia('(max-width: 639px)');
+      function syncPlaceholder(narrow: boolean) {
+        searchInput!.placeholder = narrow ? short : full;
+      }
+      syncPlaceholder(mq.matches);
+      mq.addEventListener('change', (e) => syncPlaceholder(e.matches));
+    }
+
     const resultsList = document.getElementById('recipes-list');
     const resultsCount = document.getElementById('results-count');
     const allCards = resultsList
