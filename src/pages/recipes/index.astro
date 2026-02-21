@@ -48,7 +48,9 @@ const sorted = allRecipes.sort((a, b) =>
     <div class='recipe-grid' id='recipes-list' aria-label='Recipe list'>
       {
         sorted.map((recipe) => (
-          <div data-recipe-slug={getRecipeSlug(recipe.id)}>
+          <div
+            class='recipe-grid__item'
+            data-recipe-slug={getRecipeSlug(recipe.id)}>
             <RecipeCard
               title={recipe.data.title}
               slug={getRecipeSlug(recipe.id)}

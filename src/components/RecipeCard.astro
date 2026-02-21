@@ -46,7 +46,9 @@ const date = new Date(datePublished).toLocaleDateString('en-GB', {
           loading='lazy'
           width='400'
           height='300'
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
         />
+        <div class='recipe-card__image--placeholder' style='display:none'>🍽️</div>
       ) : (
         <div class='recipe-card__image--placeholder'>🍽️</div>
       )

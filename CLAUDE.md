@@ -111,10 +111,12 @@ ingredients:
 
 ## Images
 
-- Store in `public/images/recipes/<recipe-slug>/`
-- Reference in markdown as absolute paths: `![Alt text](/images/recipes/flourless-brownie-cookies/step1.png)`
-- SVG placeholders are fine for development
-- Hero images are displayed at 960×480px aspect ratio; step images are full prose width
+- Real images are generated with Sora and provided by the user — do NOT create SVG placeholders
+- Store in `public/images/recipes/<recipe-slug>/` as `.webp` (preferred) or `.jpg`/`.png`
+- Hero image filename convention: `hero.webp`
+- Reference in markdown body as absolute paths: `![Alt text](/images/recipes/lemon-drizzle/step1.webp)`
+- Hero images are displayed at 960×480px aspect ratio; step images render at full prose width
+- If an image file is missing, the `<img>` tags have an `onerror` fallback that shows a styled grey placeholder — so broken images won't show the browser's broken-image icon during development
 
 ## Search
 
