@@ -24,9 +24,4 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-src/content/docs/*
-public/images/*
-public/pagefind
-public/staticwebapp.config.json
-
 .claude/

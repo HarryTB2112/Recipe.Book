@@ -112,7 +112,7 @@ ingredients:
 ## Images
 
 - Store in `public/images/recipes/<recipe-slug>/`
-- Reference in markdown as absolute paths: `![Alt text](/images/recipes/lemon-drizzle/step1.svg)`
+- Reference in markdown as absolute paths: `![Alt text](/images/recipes/flourless-brownie-cookies/step1.png)`
 - SVG placeholders are fine for development
 - Hero images are displayed at 960×480px aspect ratio; step images are full prose width
 
