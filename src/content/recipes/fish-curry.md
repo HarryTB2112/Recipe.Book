@@ -10,6 +10,9 @@ macros:
   carbs: 12
   fats: 21
   fibre: 1
+credit:
+  name: 'Brendan Pang'
+  url: 'https://www.instagram.com/p/DL1ov_oyAJW/'
 tags: ['curry', 'fish', 'coconut', 'chilli', 'coriander', 'quick', 'gluten-free', 'dairy-free']
 servings: 4
 times:

@@ -11,6 +11,9 @@ macros:
   carbs: 28
   fats: 15
   fibre: 5
+credit:
+  name: 'Chef Marinie'
+  url: 'https://www.chefmarinie.co.uk/eat-like-a-greek/avgolemono'
 tags:
   [
     'soup',

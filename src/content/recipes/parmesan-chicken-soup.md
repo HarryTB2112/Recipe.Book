@@ -11,6 +11,9 @@ macros:
   carbs: 24
   fats: 11
   fibre: 9
+credit:
+  name: 'emthenutritionist'
+  url: 'https://www.instagram.com/p/DTGQVo_jVWg/'
 tags:
   [
     'soup',

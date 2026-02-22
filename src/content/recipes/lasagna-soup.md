@@ -10,6 +10,9 @@ macros:
   carbs: 21
   fats: 17
   fibre: 3
+credit:
+  name: 'tylerbutt_eats'
+  url: 'https://www.instagram.com/p/DQ4hlXGDL8c/'
 tags:
   [
     'soup',

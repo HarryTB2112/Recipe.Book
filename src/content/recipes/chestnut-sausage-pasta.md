@@ -10,6 +10,9 @@ macros:
   carbs: 63
   fats: 38
   fibre: 6
+credit:
+  name: 'emthenutritionist'
+  url: 'https://www.instagram.com/reel/DDRRk9rIruH/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
 tags:
   [
     'pasta',

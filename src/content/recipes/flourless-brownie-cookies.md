@@ -4,6 +4,9 @@ description: 'Fudgy, crackle-topped cookies made without flour. Deep cocoa flavo
 datePublished: '2026-02-21'
 categories: ['Baking', 'Biscuits & Cookies', 'Desserts']
 diet: ['Gluten-Free']
+credit:
+  name: 'rossmiami.food'
+  url: 'https://www.instagram.com/reel/DOqZNgCgFUI/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
 tags:
   ['chocolate', 'brownie', 'cookies', 'gluten-free', 'flourless', 'espresso']
 servings: 14

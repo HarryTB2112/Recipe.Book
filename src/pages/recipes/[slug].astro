@@ -98,6 +98,21 @@ const related = allRecipes
           Published {formatDate(data.datePublished)}
           {data.updatedAt && ` · Updated ${formatDate(data.updatedAt)}`}
         </p>
+        {
+          data.credit && (
+            <p
+              style='font-size: var(--text-sm); color: var(--color-text-light); margin-top: var(--space-1);'>
+              Original recipe by{' '}
+              <a
+                href={data.credit.url}
+                target='_blank'
+                rel='noopener noreferrer'
+                style='color: var(--color-primary); text-decoration: underline;'>
+                {data.credit.name}
+              </a>
+            </p>
+          )
+        }
       </div>
 
       <!-- Two-column layout: sidebar (ingredients + scaler) + main content -->

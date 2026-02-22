@@ -10,6 +10,9 @@ macros:
   carbs: 42
   fats: 11
   fibre: 11
+credit:
+  name: 'emthenutritionist'
+  url: 'https://www.instagram.com/p/DS4enKhjRfN/'
 tags:
   [
     'chilli',

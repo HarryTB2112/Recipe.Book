@@ -50,6 +50,12 @@ const recipesCollection = defineCollection({
       src: z.string(),
       alt: z.string(),
     }),
+    credit: z
+      .object({
+        name: z.string(),
+        url: z.string(),
+      })
+      .optional(),
     macros: z
       .object({
         calories: z.number(),

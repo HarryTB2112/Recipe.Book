@@ -10,6 +10,9 @@ macros:
   carbs: 67
   fats: 16
   fibre: 10
+credit:
+  name: 'themacrosnerd'
+  url: 'https://www.instagram.com/p/DUU-HN1E0jG/'
 tags: ['japanese', 'curry', 'pork', 'potato', 'rice', 'mild', 'family', 'comfort food', 'dairy-free']
 servings: 5
 times:
