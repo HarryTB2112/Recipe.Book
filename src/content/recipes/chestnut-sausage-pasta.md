@@ -4,6 +4,12 @@ description: 'A rich, wintry pasta with sausage, mushroom, roasted chestnuts and
 datePublished: '2026-02-21'
 categories: ['Pasta & Noodles']
 protein: ['Pork']
+macros:
+  calories: 600
+  protein: 30
+  carbs: 63
+  fats: 38
+  fibre: 6
 tags:
   [
     'pasta',

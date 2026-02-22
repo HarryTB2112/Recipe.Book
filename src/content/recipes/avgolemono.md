@@ -5,6 +5,12 @@ datePublished: '2026-02-21'
 categories: ['Soups']
 diet: ['Gluten-Free', 'Dairy-Free']
 protein: ['Chicken']
+macros:
+  calories: 325
+  protein: 19
+  carbs: 28
+  fats: 15
+  fibre: 5
 tags:
   [
     'soup',

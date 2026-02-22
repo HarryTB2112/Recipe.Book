@@ -4,6 +4,12 @@ description: 'A hearty, smoky chilli packed with vegetables, black beans, chipot
 datePublished: '2026-02-21'
 categories: ['Curries & Stews']
 protein: ['Chicken']
+macros:
+  calories: 390
+  protein: 36
+  carbs: 42
+  fats: 11
+  fibre: 11
 tags:
   [
     'chilli',

@@ -113,6 +113,47 @@ const related = allRecipes
               />
             </div>
           </div>
+          {
+            data.macros && (
+              <div class='recipe-detail__sidebar-section'>
+                <div class='recipe-detail__sidebar-heading'>
+                  Nutrition per serving
+                </div>
+                <div class='recipe-detail__sidebar-inner'>
+                  <div class='macro-grid'>
+                    <div class='macro-item macro-item--calories'>
+                      <span class='macro-item__value'>
+                        {data.macros.calories}
+                      </span>
+                      <span class='macro-item__label'>kcal</span>
+                    </div>
+                    <div class='macro-item'>
+                      <span class='macro-item__value'>
+                        {data.macros.protein}g
+                      </span>
+                      <span class='macro-item__label'>protein</span>
+                    </div>
+                    <div class='macro-item'>
+                      <span class='macro-item__value'>
+                        {data.macros.carbs}g
+                      </span>
+                      <span class='macro-item__label'>carbs</span>
+                    </div>
+                    <div class='macro-item'>
+                      <span class='macro-item__value'>{data.macros.fats}g</span>
+                      <span class='macro-item__label'>fat</span>
+                    </div>
+                    <div class='macro-item'>
+                      <span class='macro-item__value'>
+                        {data.macros.fibre}g
+                      </span>
+                      <span class='macro-item__label'>fibre</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          }
         </aside>
 
         <!-- Main content / markdown body -->

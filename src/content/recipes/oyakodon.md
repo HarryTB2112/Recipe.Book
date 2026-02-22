@@ -5,6 +5,12 @@ datePublished: '2026-02-21'
 categories: ['Rice & Grains']
 diet: ['Dairy-Free']
 protein: ['Chicken', 'Eggs']
+macros:
+  calories: 460
+  protein: 43
+  carbs: 10
+  fats: 33
+  fibre: 1
 tags:
   [
     'japanese',

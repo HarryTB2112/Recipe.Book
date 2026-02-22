@@ -4,6 +4,12 @@ description: 'All the comfort of a slow-baked lasagna in a bowl, ready in under 
 datePublished: '2026-02-21'
 categories: ['Soups', 'Pasta & Noodles']
 protein: ['Pork']
+macros:
+  calories: 510
+  protein: 66.9
+  carbs: 21
+  fats: 17
+  fibre: 3
 tags:
   [
     'soup',

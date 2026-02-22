@@ -4,6 +4,12 @@ description: 'The Japanese curry made with pork mince and air-fried crispy potat
 datePublished: '2026-02-21'
 categories: ['Curries & Stews']
 protein: ['Pork']
+macros:
+  calories: 620
+  protein: 52
+  carbs: 67
+  fats: 16
+  fibre: 10
 tags: ['japanese', 'curry', 'pork', 'potato', 'rice', 'mild', 'family', 'comfort food', 'dairy-free']
 servings: 5
 times:

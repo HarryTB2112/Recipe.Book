@@ -4,6 +4,12 @@ description: 'A vibrant, blended curry paste of chilli, coriander and ginger for
 datePublished: '2026-02-21'
 categories: ['Curries & Stews']
 protein: ['Fish']
+macros:
+  calories: 353
+  protein: 29
+  carbs: 12
+  fats: 21
+  fibre: 1
 tags: ['curry', 'fish', 'coconut', 'chilli', 'coriander', 'quick', 'gluten-free', 'dairy-free']
 servings: 4
 times:

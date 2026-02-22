@@ -1124,6 +1124,51 @@ hr {
 }
 
 /* --------------------------------------------------------------------------
+   Macro Grid (nutrition per serving in sidebar)
+   -------------------------------------------------------------------------- */
+.macro-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+}
+
+.macro-item {
+  background: var(--color-bg-alt);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.macro-item--calories {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: baseline;
+  gap: var(--space-1);
+}
+
+.macro-item__value {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.macro-item--calories .macro-item__value {
+  font-size: var(--text-2xl);
+}
+
+.macro-item__label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* --------------------------------------------------------------------------
    Markdown / Prose Content
    -------------------------------------------------------------------------- */
 .prose {
