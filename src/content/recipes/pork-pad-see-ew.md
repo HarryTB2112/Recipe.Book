@@ -10,6 +10,7 @@ macros:
   protein: 42
   carbs: 53
   fats: 14
+  fibre: 3
 credit:
   name: 'platesandplans'
   url: 'https://www.instagram.com/platesandplans/'

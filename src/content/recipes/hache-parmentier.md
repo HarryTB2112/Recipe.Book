@@ -10,6 +10,7 @@ macros:
   protein: 57
   carbs: 38
   fats: 54
+  fibre: 3
 credit:
   name: 'Matthew Ryle'
   url: 'https://www.matthewryle.com'

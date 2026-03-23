@@ -9,6 +9,7 @@ macros:
   protein: 82
   carbs: 85
   fats: 39
+  fibre: 3
 credit:
   name: 'myriadrecipes'
   url: 'https://www.instagram.com/myriadrecipes/'

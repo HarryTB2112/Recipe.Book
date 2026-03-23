@@ -10,6 +10,7 @@ macros:
   protein: 24
   carbs: 26
   fats: 6
+  fibre: 8
 credit:
   name: 'emthenutritionist'
   url: 'https://www.instagram.com/emthenutritionist/'

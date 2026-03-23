@@ -9,6 +9,7 @@ macros:
   protein: 6
   carbs: 15
   fats: 8
+  fibre: 0
 credit:
   name: 'tylerbutt_eats'
   url: 'https://www.instagram.com/tylerbutt_eats/'

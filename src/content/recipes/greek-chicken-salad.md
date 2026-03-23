@@ -10,6 +10,7 @@ macros:
   protein: 40
   carbs: 50
   fats: 17
+  fibre: 6
 credit:
   name: 'themacrosnerd'
   url: 'https://www.instagram.com/themacrosnerd/'
