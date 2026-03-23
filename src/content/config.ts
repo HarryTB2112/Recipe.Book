@@ -10,6 +10,7 @@ const unitEnum = z.enum([
   'tbsp',
   'cup',
   'clove',
+  'cloves',
   'pinch',
 ]);
 
